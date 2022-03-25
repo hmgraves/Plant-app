@@ -36,3 +36,21 @@ body > main {
 	padding: 20px;
 	overflow-y: scroll;
 }
+
+nav > a {
+	margin: 20px;
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 5px;
+  }
+
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 34px;
+}
+
+.login img {
+	height: 30px;
+}

@@ -13,8 +13,13 @@
 <body>
 	<nav>
 		<a id="img" href="/">
-		</a>
-		<a href="/plants/new">Add a new plant</a>
-		<a href="/plants/index">View all plants</a>
+		<% if (user) { %>
+			<a href="/plants/new"	<%- title === 'Add a new plant' ? 'class="active"' : '' %>>
+				Add a new plant</a>
+			<a href="/plants/index" <%- title === 'View all plants' ? 'class="active"' : '' %>>View all plants</a>
+			<a href="/logout">LOG OUT</a>
+		  <% } else { %>
+			<a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+		  <% } %>
 	</nav>
 	<main>
