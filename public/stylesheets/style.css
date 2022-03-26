@@ -54,3 +54,33 @@ nav > a {
 .login img {
 	height: 30px;
 }
+
+main {
+	height: 100vh;
+}
+
+#new-form {
+	background-color: #519430;
+	align-items: center;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	font-size: 25px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#user-img {
+	padding-left: 85px;
+}
+
+input {
+	border-radius: 5px;
+	border: 1px;
+	height: 30px;
+	text-align: center;
+}
+
+option {
+	text-align: center;
+}
