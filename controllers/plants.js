@@ -24,8 +24,15 @@ const create = (req, res) => {
 	})
 };
 
+const show = (req, res) => {
+	Plant.findById(req.params.id, (err, plant) => {
+		res.render('plants/show', {plant});
+	});
+};
+
 module.exports = {
 	index,
 	new: newPlant,
-	create
+	create,
+	show
 };
