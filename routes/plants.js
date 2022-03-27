@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const plantsCtrl = require('../controllers/plants')
+const isLoggedIn = require('../config/auth');
+const plantsCtrl = require('../controllers/plants');
 
 
-router.get('/index', plantsCtrl.index)
-router.get('/new', plantsCtrl.new)
+router.get('/index', isLoggedIn, plantsCtrl.index);
+router.get('/new', isLoggedIn, plantsCtrl.new);
+router.post('/', plantsCtrl.create);
 
 module.exports = router;

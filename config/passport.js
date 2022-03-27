@@ -33,13 +33,13 @@ passport.use(
 );
 
 // attaches information on the user to the session
-passport.serializeUser(function (user, cb) {
+passport.serializeUser((user, cb) => {
 	cb(null, user._id);
 });
 
 // attaches the user document to the request object aka req.user
-passport.deserializeUser(function (userId, cb) {
-	User.findById(userId).then(function (user) {
+passport.deserializeUser( (userId, cb) => {
+	User.findById(userId).then((user) => {
 		cb(null, user);
 	});
 });

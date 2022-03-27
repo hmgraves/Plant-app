@@ -12,6 +12,7 @@ body {
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas:
 		"nav nav"
+		"h1 h1"
 		"main main";
 }
 

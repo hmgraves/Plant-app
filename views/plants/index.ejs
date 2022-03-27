@@ -1,5 +1,12 @@
 <%- include('../partials/header') %>
 
-<h1>Test index page</h1>
+<h1>All of your plants</h1>
+
+<div>
+	<% plants.forEach((p) => { %>
+		<p><%= p.name %> </p>
+		<p><a id="details" href="/plants/<%= p._id %>">Details</a></p>
+	<% }) %>
+</div>
 
 <%- include('../partials/footer') %>
