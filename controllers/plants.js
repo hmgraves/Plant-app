@@ -9,6 +9,12 @@ const index = (req, res) => {
 	});
 };
 
+const show = (req, res) => {
+	Plant.findById(req.params.id, (err, plant) => {
+		res.render('plants/show', {plant});
+	});
+};
+
 const newPlant = (req, res) => {
 	console.log('new');
 	res.render('plants/new');
@@ -24,15 +30,19 @@ const create = (req, res) => {
 	})
 };
 
-const show = (req, res) => {
-	Plant.findById(req.params.id, (err, plant) => {
-		res.render('plants/show', {plant});
-	});
-};
+const deletePlant = (req, res, next) => {
+	console.log('delete called')
+	Plant.deleteOne({'plant._id': req.params.id})
+	.then((plant) => {
+		res.redirect('../plants/index')
+		console.log('delete')
+	})
+}
 
 module.exports = {
 	index,
+	show,
 	new: newPlant,
 	create,
-	show
+	delete: deletePlant
 };

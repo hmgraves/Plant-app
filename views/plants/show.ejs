@@ -17,5 +17,37 @@
 <div>
 	Last repot: <%= plant.repot %>
 </div>
+<br><br>
+<h2>Comments</h2>
+<% if (plant.comments.length) { %> 
+	<table>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% plant.comments.forEach((p) => { %>
+				<tr>
+					<td> <%= p.createdAt.toLocaleDateString() %> </td>
+					<td> <%= p.content %> </td>
+				</tr>
+			<% }) %> 
+		</tbody>
+	</table>
+	<% } else { %>
+		<h5>No Comments Yet</h5>
+<% } %>
+
+<h2>Add a new comment</h2>
+<form id="add-comments-form" method="post" action="/plants/<%= plant._id %>/comments">
+	<label>Comment:</label>
+	<textarea name="content"></textarea>
+	<input type="submit" value="Add comment">
+</form>
+
+<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
+	<button type="submit">Remove plant from database</button>
 
 <%- include('../partials/footer') %>
