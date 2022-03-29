@@ -7,7 +7,9 @@ const plantsCtrl = require('../controllers/plants');
 router.get('/index', isLoggedIn, plantsCtrl.index);
 router.get('/new', isLoggedIn, plantsCtrl.new);
 router.get('/:id', isLoggedIn, plantsCtrl.show);
+router.post('/:id', plantsCtrl.update);
 router.post('/', plantsCtrl.create);
 router.delete('/:id', plantsCtrl.delete);
+
 
 module.exports = router;

@@ -3,6 +3,8 @@
 <h1>Plant details</h1>
 
 <div>
+</div>
+<div>
 	Name: <%= plant.name %>
 </div>
 <div>
@@ -12,11 +14,20 @@
 	Light preferences: <%= plant.light %>
 </div>
 <div>
-	Date bought: <%= plant.bought %>
+	Date bought: <%= plant.bought.toGMTString().split(' ').slice(0, 4).join(' ') %>
 </div>
 <div>
-	Last repot: <%= plant.repot %>
+	Last repot: <%= plant.repot.toGMTString().split(' ').slice(0, 4).join(' ') %>
 </div>
+<br><br>
+<div>
+	<form id="update-repot" method="post" action="/plants/<%= plant._id %>">
+		<label>Update repot date:</label><br>
+		<input type="date" name="repot"><br>
+		<input type="submit" value="Update">
+	</form>
+</div>
+
 <br><br>
 <h2>Comments</h2>
 <% if (plant.comments.length) { %> 
@@ -42,12 +53,23 @@
 
 <h2>Add a new comment</h2>
 <form id="add-comments-form" method="post" action="/plants/<%= plant._id %>/comments">
-	<label>Comment:</label>
-	<textarea name="content"></textarea>
+	<label>Comment:</label><br>
+	<textarea name="content"></textarea><br>
 	<input type="submit" value="Add comment">
 </form>
-
+<br><br>
 <form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
-	<button type="submit">Remove plant from database</button>
+<button type="submit">Remove plant from database</button>
+
+<br><br>
+<!-- <form method="POST" action="/plants" enctype="multipart/form-data">
+    <div>
+        <label>Upload profile picture</label>
+        <input type="file" name="profile-file"/>
+    </div>
+    <div>
+        <input type="submit" value="Upload" />
+    </div>
+</form> -->
 
 <%- include('../partials/footer') %>

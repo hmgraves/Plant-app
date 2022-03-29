@@ -11,12 +11,17 @@ const commmentSchema = new Schema({
 });
 
 const plantSchema = new Schema({
-	// photo: Image,
 	name: String,
 	water: String,
 	light: String, 
-	bought: Date,
-	repot: Date,
+	bought: {
+		type: Date,
+		required: true
+	},
+	repot: {
+		type: Date,
+		required: true
+	},
 	comments: [commmentSchema]
 });
 

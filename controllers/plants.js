@@ -1,5 +1,6 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
+const plant = require('../models/plant');
 mongoose = require('mongoose');
 const Plant = require('../models/plant');
 
@@ -27,22 +28,36 @@ const create = (req, res) => {
 		if (err) return res.render('plants/new');
 		console.log(plant);
 		res.redirect('plants/index');
+	});
+};
+
+const update = (req, res) => {
+	const id = req.params.id;
+	const repot = req.body.repot;
+	Plant.findById(req.params.id, (err, repot) => {
+		if (err) { console.log(err) }
+		Object.assign(repot, req.body)
+		repot.save(err => {
+			res.redirect('/plants/' + id);
+			console.log(repot);
+		})
 	})
 };
 
 const deletePlant = (req, res, next) => {
-	console.log('delete called')
-	Plant.deleteOne({'plant._id': req.params.id})
-	.then((plant) => {
-		res.redirect('../plants/index')
-		console.log('delete')
+	Plant.findOneAndRemove({_id: req.params.id}, (err, plant) => {
+		if (err) {
+			res.redirect('/plant/' + id)
+		}
+		res.redirect('/plants/index');
 	})
-}
+}; 
 
 module.exports = {
 	index,
 	show,
 	new: newPlant,
 	create,
+	update,
 	delete: deletePlant
 };

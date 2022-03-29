@@ -6,6 +6,17 @@ var logger = require('morgan');
 var session = require('express-session');
 const methodOverride = require('method-override');
 const passport = require('passport');
+// const multer = require('multer');
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads')
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.fieldname + '-' + Date.now())
+//   }
+// });
+// const upload = multer({ storage: storage});
+// const imgModel = require('./model');
 
 require('dotenv').config();
 require('./config/database');
@@ -38,6 +49,11 @@ app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
 });
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
+  
+// Set EJS as templating engine 
+app.set("view engine", "ejs");
 
 app.use('/', indexRouter);
 app.use('/plants', plantsRouter);
