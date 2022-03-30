@@ -1,75 +1,79 @@
 <%- include('../partials/header') %>
+	<main>
+		<h1>Plant details</h1>
+		<div class="container row row-cols-2">
+			<div class="col">
+				<div>
+					Name: <%= plant.name %>
+				</div>
+				<div>
+					Watering preferences: <%= plant.water %>
+				</div>
+				<div>
+					Light preferences: <%= plant.light %>
+				</div>
+				<div>
+					Date bought: <%= plant.bought.toGMTString().split(' ').slice(0, 4).join(' ') %>
+				</div>
+				<div>
+					Last repot: <%= plant.repot.toGMTString().split(' ').slice(0, 4).join(' ') %>
+				</div>
+				<br><br>
+				<div>
+					<form id="update-repot" method="post" action="/plants/<%= plant._id %>">
+						<label>Update repot date:</label><br>
+						<input type="date" name="repot"><br>
+						<button type="submit" class="btn btn-success" value="Update">Update</button>
+					</form>
+				</div>
+			</div>
 
-<h1>Plant details</h1>
+			<br><br>
+			<div class="col comments">
+				<h3>Comments</h3>
+				<% if (plant.comments.length) { %> 
+					<table>
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Comments</th>
+							</tr>
+						</thead>
+						<tbody class=>
+							<% plant.comments.forEach((p) => { %>
+								<tr>
+									<td> <%= p.createdAt.toLocaleDateString() %> </td>
+									<td> <%= p.content %> </td>
+								</tr>
+							<% }) %> 
+						</tbody>
+					</table>
+					<% } else { %>
+						<h5>No Comments Yet</h5>
+				<% } %>
 
-<div>
-</div>
-<div>
-	Name: <%= plant.name %>
-</div>
-<div>
-	Watering preferences: <%= plant.water %>
-</div>
-<div>
-	Light preferences: <%= plant.light %>
-</div>
-<div>
-	Date bought: <%= plant.bought.toGMTString().split(' ').slice(0, 4).join(' ') %>
-</div>
-<div>
-	Last repot: <%= plant.repot.toGMTString().split(' ').slice(0, 4).join(' ') %>
-</div>
-<br><br>
-<div>
-	<form id="update-repot" method="post" action="/plants/<%= plant._id %>">
-		<label>Update repot date:</label><br>
-		<input type="date" name="repot"><br>
-		<input type="submit" value="Update">
+				<h3 class="add-comment">Add a new comment</h3>
+				<form id="add-comments-form" method="post" action="/plants/<%= plant._id %>/comments">
+					<label>Comment:</label><br>
+					<textarea name="content"></textarea><br>
+					<button type="submit" class="btn btn-success" value="Add comment">Add comment</button>
+				</form>
+			</div>
+	</div>
+	<br><br>
+	<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
+	<button type="submit" class="btn btn-danger">Remove plant from database</button>
 	</form>
-</div>
-
-<br><br>
-<h2>Comments</h2>
-<% if (plant.comments.length) { %> 
-	<table>
-		<thead>
-			<tr>
-				<th>Date</th>
-				<th>Comments</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% plant.comments.forEach((p) => { %>
-				<tr>
-					<td> <%= p.createdAt.toLocaleDateString() %> </td>
-					<td> <%= p.content %> </td>
-				</tr>
-			<% }) %> 
-		</tbody>
-	</table>
-	<% } else { %>
-		<h5>No Comments Yet</h5>
-<% } %>
-
-<h2>Add a new comment</h2>
-<form id="add-comments-form" method="post" action="/plants/<%= plant._id %>/comments">
-	<label>Comment:</label><br>
-	<textarea name="content"></textarea><br>
-	<input type="submit" value="Add comment">
-</form>
-<br><br>
-<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
-<button type="submit">Remove plant from database</button>
-
-<br><br>
-<!-- <form method="POST" action="/plants" enctype="multipart/form-data">
-    <div>
-        <label>Upload profile picture</label>
-        <input type="file" name="profile-file"/>
-    </div>
-    <div>
-        <input type="submit" value="Upload" />
-    </div>
-</form> -->
-
+	</div>
+	<br><br>
+	<!-- <form method="POST" action="/plants" enctype="multipart/form-data">
+		<div>
+			<label>Upload profile picture</label>
+			<input type="file" name="profile-file"/>
+		</div>
+		<div>
+			<input type="submit" value="Upload" />
+		</div>
+	</form> -->
+</main>
 <%- include('../partials/footer') %>

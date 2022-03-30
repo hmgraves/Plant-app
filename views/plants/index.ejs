@@ -1,12 +1,14 @@
 <%- include('../partials/header') %>
 
-<h1>All of your plants</h1>
-
-<div>
-	<% plants.forEach((p) => { %>
-		<p><%= p.name %> </p>
-		<p><a id="details" href="/plants/<%= p._id %>">Details</a></p>
-	<% }) %>
-</div>
-
+<main>
+	<h1>All of your plants</h1>
+	<div class="container-md row justify-content-center">
+		<% plants.forEach((p) => { %>
+			<div class="plant-index">
+				<p><%= p.name %> </p>
+				<p><a id="details" href="/plants/<%= p._id %>">Details</a></p>
+			</div>
+		<% }) %>
+	</div>
+</main>
 <%- include('../partials/footer') %>

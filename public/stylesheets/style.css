@@ -7,13 +7,6 @@ body {
 	background-color: #f6f5f3;
 	margin: 0;
 	height: 100vh;
-	display: grid;
-	grid-template-rows: 70px 1fr 1fr;
-	grid-template-columns: 1fr 1fr;
-	grid-template-areas:
-		"nav nav"
-		"h1 h1"
-		"main main";
 }
 
 a {
@@ -26,16 +19,14 @@ body > nav {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	padding: 0 50px 0 50px;
 }
 
 body > main {
-	grid-area: main;
+	background-color: #f6f5f3;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 20px;
-	overflow-y: scroll;
 }
 
 nav > a {
@@ -61,18 +52,14 @@ main {
 }
 
 #new-form {
-	background-color: #519430;
+	background-color: #5CDB95;
 	align-items: center;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	font-size: 25px;
+	font-size: 20px;
 	padding: 10px;
 	border-radius: 5px;
-}
-
-#user-img {
-	padding-left: 85px;
 }
 
 input {
@@ -80,8 +67,43 @@ input {
 	border: 1px;
 	height: 30px;
 	text-align: center;
+	background-color: #7dce94;
 }
 
 option {
 	text-align: center;
+	background-color: #7dce94;
+	border-radius: 5px;
+}
+
+.plant-index {
+	background-color: #519430;
+	border:#519430;
+	border-radius: 50%;
+	height: 250px;
+	width: 250px;
+	text-align: center;
+	padding-top: 50px;
+	margin: 20px
+}
+
+h1 {
+	padding-bottom: 50px;
+}
+
+button:hover {
+	opacity: 50%;
+}
+
+.comments {
+	text-align: right;
+}
+
+table {
+	margin-right: 0px;
+    margin-left: auto;
+}
+
+.add-comment {
+	padding-top: 50px;
 }
