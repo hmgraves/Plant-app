@@ -1,13 +1,17 @@
 <%- include('../partials/header') %>
 
 <main>
-	<h1>All of your plants</h1>
+	<h1>Your plant</h1>
 	<div class="container-md row justify-content-center">
 		<% plants.forEach((p) => { %>
-			<div class="plant-index">
-				<p><%= p.name %> </p>
-				<p><a id="details" href="/plants/<%= p._id %>">Details</a></p>
-			</div>
+			<a id="details" href="/plants/<%= p._id %>">
+				<div class="plant-index">
+				<% if (p.data) { %>
+					<img class="img" src="data:image/<%=p.contentType%>;base64,
+						 <%=p.data.toString('base64')%>"  width="160" height="120">
+			   <% } %>
+				<p class="plant-name"><%= p.name %> </p>
+			</div></a>
 		<% }) %>
 	</div>
 </main>

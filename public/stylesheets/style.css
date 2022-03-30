@@ -2,15 +2,8 @@
 	font-family: "Inter", sans-serif;
 }
 
-body {
-	font: 14px;
-	background-color: #f6f5f3;
-	margin: 0;
-	height: 100vh;
-}
-
 a {
-	color: yellow;
+	color: yellow !important;
 }
 
 body > nav {
@@ -22,7 +15,7 @@ body > nav {
 }
 
 body > main {
-	background-color: #f6f5f3;
+	background-color: #ebf7e7;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -52,7 +45,7 @@ main {
 }
 
 #new-form {
-	background-color: #5CDB95;
+	background-color: #aedd97;
 	align-items: center;
 	text-align: center;
 	display: flex;
@@ -60,6 +53,7 @@ main {
 	font-size: 20px;
 	padding: 10px;
 	border-radius: 5px;
+	width: 600px
 }
 
 input {
@@ -67,7 +61,9 @@ input {
 	border: 1px;
 	height: 30px;
 	text-align: center;
-	background-color: #7dce94;
+	color: #495057;
+	font-size: 1rem !important;
+	/* background-color: #7dce94; */
 }
 
 option {
@@ -77,9 +73,9 @@ option {
 }
 
 .plant-index {
-	background-color: #519430;
+	background-color: #aedd97;
 	border:#519430;
-	border-radius: 50%;
+	border-radius: 30%;
 	height: 250px;
 	width: 250px;
 	text-align: center;
@@ -87,8 +83,13 @@ option {
 	margin: 20px
 }
 
+.plant-index:hover {
+	opacity: 50%;
+}
+
 h1 {
-	padding-bottom: 50px;
+	padding-bottom: 30px;
+	color: #3a6a22;
 }
 
 button:hover {
@@ -100,10 +101,31 @@ button:hover {
 }
 
 table {
-	margin-right: 0px;
     margin-left: auto;
 }
 
 .add-comment {
 	padding-top: 50px;
+}
+
+.headline {
+	font-size: 20px;
+	color:#519430;
+}
+
+.plant-name {
+	font-size: 20px;
+	color: #3a6a22;
+}
+
+.new-plant-name {
+	width: 500px !important;
+}
+
+.img {
+	border-radius: 30%;
+}
+
+.table {
+	/* width: 10px; */
 }

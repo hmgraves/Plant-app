@@ -1,27 +1,39 @@
 <%- include('../partials/header') %>
 	<main>
-		<h1>Plant details</h1>
+		<h1>
+			<%= plant.name %>
+		</h1>
+		<div>
+			<% if (plant.data) { %>
+				 <img class="img" src="data:image/<%=plant.contentType%>;base64,
+					  <%=plant.data.toString('base64')%>"  width="320" height="240">
+			<% } %>
+		 </div>
 		<div class="container row row-cols-2">
 			<div class="col">
 				<div>
-					Name: <%= plant.name %>
+					<div class="headline">Name:</div>
+					<%= plant.name %>
 				</div>
 				<div>
-					Watering preferences: <%= plant.water %>
+					<div class="headline">Watering preferences:</div>
+					<%= plant.water %>
 				</div>
 				<div>
-					Light preferences: <%= plant.light %>
+					<div class="headline">Light preferences:</div>
+					<%= plant.light %>
 				</div>
 				<div>
-					Date bought: <%= plant.bought.toGMTString().split(' ').slice(0, 4).join(' ') %>
+					<div class="headline">Date bought:</div>
+					<%= plant.bought.toGMTString().split(' ').slice(0, 4).join(' ') %>
 				</div>
 				<div>
-					Last repot: <%= plant.repot.toGMTString().split(' ').slice(0, 4).join(' ') %>
+					<div class="headline">Last repot:</div> <%= plant.repot.toGMTString().split(' ').slice(0, 4).join(' ') %>
 				</div>
 				<br><br>
 				<div>
 					<form id="update-repot" method="post" action="/plants/<%= plant._id %>">
-						<label>Update repot date:</label><br>
+						<label class="headline">Update repot date:</label><br>
 						<input type="date" name="repot"><br>
 						<button type="submit" class="btn btn-success" value="Update">Update</button>
 					</form>
@@ -30,19 +42,13 @@
 
 			<br><br>
 			<div class="col comments">
-				<h3>Comments</h3>
+				<h3 class="headline">Comments</h3>
 				<% if (plant.comments.length) { %> 
 					<table>
-						<thead>
-							<tr>
-								<th>Date</th>
-								<th>Comments</th>
-							</tr>
-						</thead>
 						<tbody class=>
 							<% plant.comments.forEach((p) => { %>
 								<tr>
-									<td> <%= p.createdAt.toLocaleDateString() %> </td>
+									<td> <%= p.createdAt.toLocaleDateString() %>:</td>
 									<td> <%= p.content %> </td>
 								</tr>
 							<% }) %> 
@@ -51,8 +57,8 @@
 					<% } else { %>
 						<h5>No Comments Yet</h5>
 				<% } %>
-
-				<h3 class="add-comment">Add a new comment</h3>
+				<br>
+				<h3 class="add-comment headline">Add a new comment</h3>
 				<form id="add-comments-form" method="post" action="/plants/<%= plant._id %>/comments">
 					<label>Comment:</label><br>
 					<textarea name="content"></textarea><br>
@@ -66,14 +72,7 @@
 	</form>
 	</div>
 	<br><br>
-	<!-- <form method="POST" action="/plants" enctype="multipart/form-data">
-		<div>
-			<label>Upload profile picture</label>
-			<input type="file" name="profile-file"/>
-		</div>
-		<div>
-			<input type="submit" value="Upload" />
-		</div>
-	</form> -->
+  
+
 </main>
 <%- include('../partials/footer') %>

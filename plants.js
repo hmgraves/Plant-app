@@ -1,8 +1,8 @@
-const req = require('express/lib/request');
-const res = require('express/lib/response');
-const plant = require('../models/plant');
 mongoose = require('mongoose');
-const Plant = require('../models/plant');
+const multer = require('multer');
+const fs  = require('fs')
+var path = require('path');
+const Plant = require('./models/plant');
 
 const index = (req, res) => {
 	Plant.find({}, (err, plants) => {
@@ -22,16 +22,27 @@ const newPlant = (req, res) => {
 };
 
 const create = (req, res) => {
-	console.log('this works')
-	const plant = new Plant(req.body);
-	plant.save((err) => {
-		if (err) return res.render('plants/new');
-		console.log(plant);
-		res.redirect('plants/index');
+	var obj = {
+        name: req.body.name,
+        water: req.body.water,
+        light: req.body.light,
+        bought: req.body.bought,
+        repot: req.body.repot,
+		data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+        contentType: 'image/jpg'
+    }
+	Plant.create(obj, (err, plants) => {
+		if (err) {
+			return res.render('plants/new');
+		} else {
+			plants.save();
+			res.redirect('plants/index');
+		}
 	});
 };
 
 const update = (req, res) => {
+	console.log('update')
 	const id = req.params.id;
 	const repot = req.body.repot;
 	Plant.findById(req.params.id, (err, repot) => {
@@ -39,7 +50,6 @@ const update = (req, res) => {
 		Object.assign(repot, req.body)
 		repot.save(err => {
 			res.redirect('/plants/' + id);
-			console.log(repot);
 		})
 	})
 };
