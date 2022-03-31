@@ -1,5 +1,6 @@
 * {
-	font-family: "Inter", sans-serif;
+	font-family: 'Inter', sans-serif;
+	font-family: 'Merienda', cursive;
 }
 
 a {
@@ -23,7 +24,7 @@ body > main {
 }
 
 nav > a {
-	margin: 20px;
+	margin: 10px;
 	text-decoration: none;
 	padding: 10px;
 	border-radius: 5px;
@@ -128,4 +129,14 @@ table {
 
 .index-img {
 	height:50%;
+}
+
+.nav-logo {
+	text-align: left;
+	margin-right: auto;
+	font-size: 30px;
+}
+
+.image {
+	margin-left: 90px;
 }

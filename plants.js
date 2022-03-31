@@ -1,6 +1,6 @@
 mongoose = require('mongoose');
 const multer = require('multer');
-const fs  = require('fs')
+const fs  = require('fs');
 var path = require('path');
 const Plant = require('./models/plant');
 
@@ -17,7 +17,6 @@ const show = (req, res) => {
 };
 
 const newPlant = (req, res) => {
-	console.log('new');
 	res.render('plants/new');
 };
 
@@ -30,37 +29,36 @@ const create = (req, res) => {
         repot: req.body.repot,
 		data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
         contentType: 'image/jpg'
-    }
+    };
 	Plant.create(obj, (err, plants) => {
 		if (err) {
 			return res.render('plants/new');
 		} else {
 			plants.save();
 			res.redirect('plants/index');
-		}
+		};
 	});
 };
 
 const update = (req, res) => {
-	console.log('update')
 	const id = req.params.id;
 	const repot = req.body.repot;
 	Plant.findById(req.params.id, (err, repot) => {
 		if (err) { console.log(err) }
-		Object.assign(repot, req.body)
+		Object.assign(repot, req.body);
 		repot.save(err => {
 			res.redirect('/plants/' + id);
-		})
-	})
+		});
+	});
 };
 
 const deletePlant = (req, res, next) => {
 	Plant.findOneAndRemove({_id: req.params.id}, (err, plant) => {
 		if (err) {
-			res.redirect('/plant/' + id)
-		}
+			res.redirect('/plant/' + id);
+		};
 		res.redirect('/plants/index');
-	})
+	});
 }; 
 
 module.exports = {

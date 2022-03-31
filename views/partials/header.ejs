@@ -6,16 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='stylesheet' href='/stylesheets/style.css' />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" href="/node_modules/bootstrap/scss/"> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-	<title>Plants</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter&family=Merienda:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 	<nav>
 		<a id="img" href="/">
 		<% if (user) { %>
+			<a href="/" class="nav-logo">Vines</a>
 			<a href="/plants/new">Add a new plant</a>
 			<a href="/plants/index">View all plants</a>
 			<a href="/logout">LOG OUT</a>
