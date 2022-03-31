@@ -16,11 +16,11 @@ const plantSchema = new Schema({
 	light: String, 
 	bought: {
 		type: Date,
-		// required: true
+		required: true
 	},
 	repot: {
 		type: Date,
-		// required: true
+		required: true
 	},
 	data: Buffer,
     contentType: String,
