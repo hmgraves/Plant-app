@@ -24,7 +24,13 @@ const plantSchema = new Schema({
 	},
 	data: Buffer,
     contentType: String,
-	comments: [commmentSchema]
+	comments: [commmentSchema],
+	user: {
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	},
+	userName: String,
+	userAvatar: String
 });
 
 
