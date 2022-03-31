@@ -67,12 +67,13 @@
 			</div>
 	</div>
 	<br><br>
-	<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
-	<button type="submit" class="btn btn-danger">Remove plant from database</button>
-	</form>
-	</div>
+	<% if (user.id && user._id.equals(user.id)) { %> 
+		<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
+		<button type="submit" class="btn btn-danger">Remove plant from database</button>
+		</form>
+	<% } %>
 	<br><br>
-  
+	</div> 
 
 </main>
 <%- include('../partials/footer') %>

@@ -31,6 +31,9 @@ const create = (req, res) => {
         contentType: 'image/jpg'
     };
 	Plant.create(obj, (err, plants) => {
+		req.body.user = req.user._id;
+        req.body.userName = req.user.name;
+        req.body.userAvatar = req.user.avatar;
 		if (err) {
 			return res.render('plants/new');
 		} else {
@@ -56,7 +59,7 @@ const deletePlant = (req, res, next) => {
 	Plant.findOneAndRemove({_id: req.params.id}, (err, plant) => {
 		if (err) {
 			res.redirect('/plant/' + id);
-		};
+		}
 		res.redirect('/plants/index');
 	});
 }; 
