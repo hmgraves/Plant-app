@@ -21,7 +21,7 @@ router.get('/new', isLoggedIn, plantsCtrl.new);
 router.get('/:id', isLoggedIn, plantsCtrl.show);
 router.post('/', upload.single('img'), plantsCtrl.create);
 router.post('/:id', plantsCtrl.update);
-router.delete('/:id', plantsCtrl.delete);
+router.delete('/:id', isLoggedIn, plantsCtrl.delete);
 
 
 module.exports = router;

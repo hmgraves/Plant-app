@@ -27,13 +27,14 @@ const create = (req, res) => {
         light: req.body.light,
         bought: req.body.bought,
         repot: req.body.repot,
+		user: req.user._id,
 		data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
         contentType: 'image/jpg'
     };
 	Plant.create(obj, (err, plants) => {
-		req.body.user = req.user._id;
-        req.body.userName = req.user.name;
-        req.body.userAvatar = req.user.avatar;
+		req.body.user = req.user._id
+        req.body.userName = req.user.name
+        req.body.userAvatar = req.user.avatar
 		console.log(req.user._id)
 		if (err) {
 			return res.render('plants/new');
@@ -64,6 +65,7 @@ const deletePlant = (req, res, next) => {
 		res.redirect('/plants/index');
 	});
 }; 
+
 
 module.exports = {
 	index,

@@ -2,51 +2,51 @@
 	<main>
 		<h1>Add a new plant</h1>
 		<% if (user) { %>
-		<form id="new-form" action="/plants" method="post" enctype="multipart/form-data">
-		<br>
-		<label>Plant name
-			<br>
-			<input type="text" name="name" class="new-plant-name form-control" autocomplete="off">
-		</label>
-		<br>
-		<label class="form-label">Water
-			<br>
-			<select name="water" id="datalistOptions" class="form-control">
-				<option value="When soil has dried out completely">When soil has dried out completely</option>
-				<option value="When soil has dried out three-fourths to the bottom">When soil has dried out three-fourths to the bottom</option>
-				<option value="When soil has dried out halfway to the bottom">When soil has dried out halfway to the bottom</option>
-				<option value="When top 1-2 of soil is dry">When top 1-2" of soil is dry</option>
-			</select>
-		</label>
-		<br>
-		<label>Light
-			<br>
-			<select name="light" class="form-control">
-				<option value="Bright direct light">Bright direct light</option>
-				<option value="Bright indirect light">Bright indirect light</option>
-				<option value="Medium direct light">Medium direct light</option>
-				<option value="Medium indirect light">Medium indirect light</option>
-				<option value="Low light">Low light</option>
-			</select>
-		</label>
-		<br>
-		<label>Date bought
-			<br>
-			<input type="date" name="bought">
-		</label>
-		<br>
-		<label>Date of last repot
-			<br>
-			<input type="date" name="repot">
-		</label>
-		<br>
-		<div>
-			<label for="image">Upload Image</label><br>
-			<input type="file" id="image" class="image" name="img" value="">
-		</div>
-		<br>
-		<button id="new-plant" type="submit" class="btn btn-success">Add your new plant!</button>
-	</form>
-	<% } %>
-</main>
+			<form id="new-form" action="/plants" method="post" enctype="multipart/form-data">
+				<br>
+				<label>Plant name
+					<br>
+					<input type="text" name="name" class="new-plant-name form-control" autocomplete="off">
+				</label>
+				<br>
+				<label class="form-label">Water
+					<br>
+					<select name="water" id="datalistOptions" class="form-control">
+						<option value="When soil has dried out completely">When soil has dried out completely</option>
+						<option value="When soil has dried out three-fourths to the bottom">When soil has dried out three-fourths to the bottom</option>
+						<option value="When soil has dried out halfway to the bottom">When soil has dried out halfway to the bottom</option>
+						<option value="When top 1-2 of soil is dry">When top 1-2" of soil is dry</option>
+					</select>
+				</label>
+				<br>
+				<label>Light
+					<br>
+					<select name="light" class="form-control">
+						<option value="Bright direct light">Bright direct light</option>
+						<option value="Bright indirect light">Bright indirect light</option>
+						<option value="Medium direct light">Medium direct light</option>
+						<option value="Medium indirect light">Medium indirect light</option>
+						<option value="Low light">Low light</option>
+					</select>
+				</label>
+				<br>
+				<label>Date bought
+					<br>
+					<input type="date" name="bought">
+				</label>
+				<br>
+				<label>Date of last repot
+					<br>
+					<input type="date" name="repot">
+				</label>
+				<br>
+				<div>
+					<label for="image">Upload Image</label><br>
+					<input type="file" id="image" class="image" name="img" value="">
+				</div>
+				<br>
+				<button id="new-plant" type="submit" class="btn btn-success">Add your new plant!</button>
+			</form>
+		<% } %>
+	</main>
 <%- include('../partials/footer') %>

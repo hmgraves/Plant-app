@@ -67,12 +67,11 @@
 			</div>
 	</div>
 	<br><br>
-	<% if (userName === plant.userName) { %> 
+	<% if (user && user._id.equals(plant.user)) { %> 
 		<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
 		<button type="submit" class="btn btn-danger">Remove plant from database</button>
 		</form>
 	<% } %>
-	<br><br>
 	</div> 
 
 </main>
