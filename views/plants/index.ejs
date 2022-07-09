@@ -6,12 +6,13 @@
 		<% plants.forEach((p) => { %>
 			<a id="details" href="/plants/<%= p._id %>">
 				<div class="plant-index">
-				<% if (p.data) { %>
-					<img class="img" src="data:image/<%=p.contentType%>;base64,
-						 <%=p.data.toString('base64')%>"  width="160" height="120">
-			   <% } %>
+					<% if (p.data) { %>
+						<img class="img" src="data:image/<%=p.contentType%>;base64,
+							<%=p.data.toString('base64')%>"  width="160" height="120">
+					<% } %>
 				<p class="plant-name"><%= p.name %> </p>
-			</div></a>
+				</div>
+			</a>
 		<% }) %>
 	</div>
 </main>
