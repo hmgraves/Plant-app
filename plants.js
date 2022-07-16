@@ -6,7 +6,7 @@ const Plant = require('./models/plant');
 
 const index = (req, res) => {
 	Plant.find({"user": req.user._id}, (err, plants) => {
-		console.log('index')
+		// console.log('index');
 		res.render('plants/index', { plants });
 	});
 };

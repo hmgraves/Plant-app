@@ -41,6 +41,17 @@ nav > a {
 	height: 30px;
 }
 
+.home-page {
+	background-image: url("https://d33x1o3gj9io8i.cloudfront.net/images/1421/md_UrRP3a9dQSaPSpQXwvwM");
+	background-size:cover;
+	opacity: 70%;
+}
+
+.home-page > * {
+	opacity: 100%;
+	color: black;
+}
+
 main {
 	height: 100vh;
 }
@@ -64,7 +75,6 @@ input {
 	text-align: center;
 	color: #495057;
 	font-size: 1rem !important;
-	/* background-color: #7dce94; */
 }
 
 option {
@@ -125,10 +135,6 @@ table {
 
 .img {
 	border-radius: 30%;
-}
-
-.index-img {
-	height:50%;
 }
 
 .nav-logo {
